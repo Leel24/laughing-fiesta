@@ -1,49 +1,61 @@
 public class Launch{
  
   int launchStartX, launchStartY, launchEndX, launchEndY;
+  boolean launched = false;
  
   Launch(){
-   launchStartX = 150;
-   launchStartY = 750;
-   launchEndX = 150;
-   launchEndY = 750;
+   
   }
  
   void setLaunchStartX(int a){
-   launchStartX = a;
+    launchStartX = a;
   }
  
   void setLaunchStartY(int a){
-  launchStartY = a;
+    launchStartY = a;
   }
  
   int getLaunchStartX(){
-  return launchStartX;
+    return launchStartX;
   }
  
   int getLaunchStartY(){
-  return launchStartY;
+    return launchStartY;
   }
  
   void setLaunchEndX(int a){
-  launchEndX = a+170;
+    launchEndX = a+launchStartX;
   }
  
   void setLaunchEndY(int a){
-  launchEndY = a+735;
+    launchEndY = a+launchStartY;
   }
  
   int getLaunchEndX(){
-  return launchEndX;
+    return launchEndX;
   }
  
   int getLaunchEndY(){
-  return launchEndY;
+    return launchEndY;
+  }
+  
+  void setLaunched(boolean a){
+    launched = a;
+  }
+  
+  boolean getLaunched(){
+    return launched;
+  }
+  
+  float go(){
+    
+    return 0.0;
   }
  
   //draws guide for direction/magnitude of ball
-  void drawVector(){
-  line(l.getLaunchStartX(),l.getLaunchStartY(),l.getLaunchEndX(),l.getLaunchEndY());
+  void drawGuide(){
+    // if (!leftclickhasoccured)
+    line(l.getLaunchStartX(),l.getLaunchStartY(),l.getLaunchEndX(),l.getLaunchEndY());
   }
  
 }

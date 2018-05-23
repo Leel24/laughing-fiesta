@@ -5,15 +5,15 @@ class Obstacles implements Collidable{
   }
  
   void drawObstacles(){
-  rect(400,500,100,100);
+    //rect(400,500,100,100);
   }
  
   boolean checkWallCollision(){
-  return false;
+    return false;
   }
  
   boolean checkCollision(){
-  return false;
+    return false;
   }
  
   void bounce(){

@@ -4,16 +4,12 @@ public class Terrain{
  
   Terrain(){
   }
- 
-  void goal(){
-  noFill();
-  stroke(255,0,0);
-  strokeWeight(3);
-  arc(1000,500,55,40,0,PI);
-  }
- 
-  void obstacles(){
-  //randomly generates collidable objects (based on difficulty level??)
+  
+  void goal(int x, int y){
+    noFill();
+    stroke(255,0,0);
+    strokeWeight(3);
+    arc(x,y,40,35,0,PI);
   }
  
 }
