@@ -1,6 +1,6 @@
 public class Launch{
  
-  int launchStartX, launchStartY, launchEndX, launchEndY;
+  PVector launchStart = new PVector(), launchEnd = new PVector();
   boolean launched = false;
  
   Launch(){
@@ -8,54 +8,56 @@ public class Launch{
   }
  
   void setLaunchStartX(int a){
-    launchStartX = a;
+    launchStart.x = a;
   }
  
   void setLaunchStartY(int a){
-    launchStartY = a;
+    launchStart.y = a;
   }
  
   int getLaunchStartX(){
-    return launchStartX;
+    return (int)launchStart.x;
   }
  
   int getLaunchStartY(){
-    return launchStartY;
+    return (int)launchStart.y;
   }
  
   void setLaunchEndX(int a){
-    launchEndX = a+launchStartX;
+    launchEnd.x = launchStart.x + a;
   }
  
   void setLaunchEndY(int a){
-    launchEndY = a+launchStartY;
+    launchEnd.y = launchStart.y + a;
   }
  
   int getLaunchEndX(){
-    return launchEndX;
+    return (int)launchEnd.x;
   }
  
   int getLaunchEndY(){
-    return launchEndY;
+    return (int)launchEnd.y;
   }
   
   void setLaunched(boolean a){
     launched = a;
   }
   
+  //returns whether ball has been launched
   boolean getLaunched(){
     return launched;
-  }
-  
-  float go(){
-    
-    return 0.0;
   }
  
   //draws guide for direction/magnitude of ball
   void drawGuide(){
-    // if (!leftclickhasoccured)
-    line(l.getLaunchStartX(),l.getLaunchStartY(),l.getLaunchEndX(),l.getLaunchEndY());
+    if (!launched){
+      line(launchStart.x,launchStart.y,launchEnd.x,launchEnd.y);
+    }
+    //after clicking, sets velocity to (x,y) of position clicked
+    else {
+     l.setLaunchEndX(pmouseX); 
+     l.setLaunchEndY(pmouseY);
+    } 
   }
  
 }

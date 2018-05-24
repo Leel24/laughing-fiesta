@@ -1,11 +1,23 @@
 class Obstacles implements Collidable{
  
-  Obstacles(){
+  int obx, oby, w, h;
   
+  Obstacles(int a, int b, int c, int d){
+    obx = a;
+    oby = b;
+    w = c;
+    h = d;
+  }
+  
+  Obstacles(int a, int b, int c){
+    obx = a;
+    oby = b;
+    w = c;
   }
  
   void drawObstacles(){
-    //rect(400,500,100,100);
+    stroke(255,0,0);
+    ellipse(obx, oby, w, w);
   }
  
   boolean checkWallCollision(){

@@ -1,20 +1,37 @@
 Launch l = new Launch ();
-Ball b = new Ball(100,500,10);
+Ball b = new Ball(150,450,10);
 Terrain t = new Terrain();
-Obstacles o = new Obstacles();
+Menu m = new Menu();
+
+  //higher velMod means lower launch velocity
+  float velMod = 20;
+  Obstacles[] z = new Obstacles[3];
 
 void setup(){
-  size(800,600);
+  size(1000,600);
   l.setLaunchStartX(b.getX());
   l.setLaunchStartY(b.getY());
+  l.setLaunchEndX(b.getX());
+  l.setLaunchEndY(b.getY());
+  for (int i=0; i<z.length; i++){
+   z[i] = new Obstacles((int)(Math.random()*500+250),(int)(Math.random()*400+100),(int)(Math.random()*100+30),(int)(Math.random()*100+30)); 
+  }
 }
 
 void draw(){
-  background(50);
-  t.goal(500,300);
-  l.drawGuide();
-  b.move();
-  o.drawObstacles();
+  if (!m.getStartMenuActive()){
+    background(50);
+    t.goal(800,400);
+    l.drawGuide();
+    for(int i=0; i<z.length; i++){
+      z[i].drawObstacles();
+    }
+    b.move();
+    m.displayGameMenu();
+  }
+  else {
+    m.displayStartMenu();
+  }
 }
 
 void mouseMoved(){
@@ -23,5 +40,17 @@ void mouseMoved(){
 }
 
 void mouseClicked(){
-  l.setLaunched(true);
+  if (!m.getStartMenuActive()){
+    l.setLaunched(true);
+    b.setVel(new PVector((l.getLaunchEndX()-l.getLaunchStartX())/velMod, (l.getLaunchEndY()-l.getLaunchStartY())/velMod));
+  }
+  else {
+    //300,200,400,140
+    if (mouseX>300 && mouseX<700 && mouseY>200 && mouseY<340){
+      m.toggleStartMenuActive();
+      m.toggleGameActive();
+    }
+      
+  }
+
 }

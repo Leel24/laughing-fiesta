@@ -1,34 +1,41 @@
 class Ball implements Collidable{
  
-  int XPos, YPos, size;
-  PVector position = new PVector(), velocity = new PVector();
+  int size;
+  PVector position, velocity = new PVector(0,0), g = new PVector(0,0.08);
  
-  Ball(int s){
-    XPos=width;
-    YPos=height;
-    size=s;
-  }
-  
   Ball(int x,int y,int s){
-    XPos=x;
-    YPos=y;
+    position = new PVector(x,y);
     size=s;
   }
  
   int getX(){
-    return XPos;
+    return (int)position.x;
   }
  
   int getY(){
-    return YPos;
+    return (int)position.y;
+  }
+  
+  void setVel(PVector a){
+   velocity = a; 
+  }
+  
+  PVector getVel(){
+    return velocity;
   }
  
+  //before clicking, ball stays in place because velocity = (0,0)
+  //after clicking, ball launches with intial velocity and begins parabolic motion with g
   void move(){
     fill(255);
     stroke(255);
-    ellipse(XPos,YPos,size,size);
-    position.add(velocity);
-    //velocity.add(g);
+    ellipse(position.x,position.y,size,size);
+    if (l.getLaunched()){
+      position.add(velocity);
+      velocity.add(g);
+    }
+    if (Math.abs(position.x-t.getGoal().x)<=size || Math.abs(position.y-t.getGoal().y)<=size);
+    
   }
   
   boolean checkWallCollision(){
