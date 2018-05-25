@@ -53,11 +53,4 @@ public class Launch{
     if (!launched){
       line(launchStart.x,launchStart.y,launchEnd.x,launchEnd.y);
     }
-    //after clicking, sets velocity to (x,y) of position clicked
-    else {
-     l.setLaunchEndX(pmouseX); 
-     l.setLaunchEndY(pmouseY);
-    } 
-  }
- 
 }

@@ -17,7 +17,7 @@ class Ball implements Collidable{
   }
   
   void setVel(PVector a){
-   velocity = a; 
+    velocity = a; 
   }
   
   PVector getVel(){
@@ -34,21 +34,22 @@ class Ball implements Collidable{
       position.add(velocity);
       velocity.add(g);
     }
-    if (Math.abs(position.x-t.getGoal().x)<=size || Math.abs(position.y-t.getGoal().y)<=size);
+    
+    
     
   }
   
-  boolean checkWallCollision(){
-    //if x+/-size or y+/-size is at edge, return true
-    return false;
+  void checkWallCollision(){
+    if (position.x-size<0 || position.x+size>1000){
+      velocity.x *= -1;
+    }
+    if (position.y-size<0 || position.y-size>600){
+      velocity.y *= -1;
+    }
   }
   
-  boolean checkCollision(){
-    return false;
-  }
- 
-  void bounce(){
-  
+  void checkCollision(){
+    
   }
  
 }

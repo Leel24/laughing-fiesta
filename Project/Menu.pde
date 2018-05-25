@@ -1,6 +1,6 @@
 class Menu{
   
-  boolean startMenuActive = true, gameActive = false, victory = false;
+  boolean startMenuActive = false, gameActive = false, victory = false;
   
   Menu(){
   }

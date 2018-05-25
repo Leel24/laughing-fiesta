@@ -5,7 +5,7 @@ Menu m = new Menu();
 
   //higher velMod means lower launch velocity
   float velMod = 20;
-  Obstacles[] z = new Obstacles[3];
+  Obstacles[] z = new Obstacles[0];
 
 void setup(){
   size(1000,600);
@@ -28,6 +28,11 @@ void draw(){
     }
     b.move();
     m.displayGameMenu();
+    b.checkWallCollision();
+    if (mousePressed){
+      l.setLaunched(true);
+      b.setVel(new PVector((l.getLaunchEndX()-l.getLaunchStartX())/velMod, (l.getLaunchEndY()-l.getLaunchStartY())/velMod));
+    }
   }
   else {
     m.displayStartMenu();
@@ -41,8 +46,8 @@ void mouseMoved(){
 
 void mouseClicked(){
   if (!m.getStartMenuActive()){
-    l.setLaunched(true);
-    b.setVel(new PVector((l.getLaunchEndX()-l.getLaunchStartX())/velMod, (l.getLaunchEndY()-l.getLaunchStartY())/velMod));
+    //l.setLaunched(true);
+    //b.setVel(new PVector((l.getLaunchEndX()-l.getLaunchStartX())/velMod, (l.getLaunchEndY()-l.getLaunchStartY())/velMod));
   }
   else {
     //300,200,400,140
