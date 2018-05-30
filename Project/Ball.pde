@@ -1,6 +1,7 @@
 class Ball implements Collidable{
  
-  int size;
+  int size, distance;
+  float theta;
   PVector position, velocity = new PVector(0,0), g = new PVector(0,0.08);
  
   Ball(int x,int y,int s){
@@ -48,8 +49,19 @@ class Ball implements Collidable{
     }
   }
   
-  void checkCollision(){
-    
+  void checkCollision(Obstacles a){
+    distance = (int)Math.sqrt(Math.pow(position.x-a.getPos().x, 2) + Math.pow(position.x-a.getPos().x, 2));
+    if (distance < size + a.getSize()){
+      //ball hits between pi/2 and 3pi/2
+      if (position.x < a.getPos().x){
+        theta = asin((a.getPos().x-position.x)/a.getSize());
+        velocity.x *= cos(theta);
+        velocity.y *= sin(theta);
+      }
+      else{
+        
+      }
+    }
   }
  
 }

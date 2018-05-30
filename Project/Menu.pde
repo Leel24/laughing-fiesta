@@ -1,6 +1,7 @@
 class Menu{
   
   boolean startMenuActive = false, gameActive = false, victory = false;
+  int mode;
   
   Menu(){
   }

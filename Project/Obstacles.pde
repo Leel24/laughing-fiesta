@@ -1,18 +1,19 @@
 class Obstacles implements Collidable{
  
-  int obx, oby, w, h;
-  
-  Obstacles(int a, int b, int c, int d){
-    obx = a;
-    oby = b;
-    w = c;
-    h = d;
-  }
+  int obx, oby, w;
   
   Obstacles(int a, int b, int c){
     obx = a;
     oby = b;
     w = c;
+  }
+  
+  PVector getPos(){
+    return new PVector(obx, oby);
+  }
+  
+  int getSize(){
+   return w;
   }
  
   void drawObstacles(){

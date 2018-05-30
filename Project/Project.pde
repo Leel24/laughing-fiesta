@@ -5,7 +5,7 @@ Menu m = new Menu();
 
   //higher velMod means lower launch velocity
   float velMod = 20;
-  Obstacles[] z = new Obstacles[0];
+  Obstacles[] z = new Obstacles[1];
 
 void setup(){
   size(1000,600);
@@ -14,7 +14,7 @@ void setup(){
   l.setLaunchEndX(b.getX());
   l.setLaunchEndY(b.getY());
   for (int i=0; i<z.length; i++){
-   z[i] = new Obstacles((int)(Math.random()*500+250),(int)(Math.random()*400+100),(int)(Math.random()*100+30),(int)(Math.random()*100+30)); 
+   z[i] = new Obstacles((int)(Math.random()*500+250),(int)(Math.random()*400+100),(int)(Math.random()*100+30)); 
   }
 }
 
@@ -26,6 +26,9 @@ void draw(){
     for(int i=0; i<z.length; i++){
       z[i].drawObstacles();
     }
+       
+     b.checkCollision(z[0]);
+    
     b.move();
     m.displayGameMenu();
     b.checkWallCollision();
